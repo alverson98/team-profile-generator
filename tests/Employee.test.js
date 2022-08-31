@@ -13,7 +13,7 @@ describe("Employee class", () => {
   describe("getName", () => {
     it("should get employee's name from getName method", () => {
       const name = "Hannah";
-      const employee = new Employee(name, id, email);
+      const employee = new Employee(name, 10, "hannah@example.com");
 
       expect(employee.getName()).toEqual(name);
     });
@@ -22,7 +22,7 @@ describe("Employee class", () => {
   describe("getId", () => {
     it("should get employee's id from getId method", () => {
       const id = 10;
-      const employee = new Employee("Hannah", id, email);
+      const employee = new Employee("Hannah", id, "hannah@example.com");
 
       expect(employee.getId()).toEqual(id);
     });
