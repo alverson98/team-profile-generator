@@ -7,7 +7,7 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-// Team member questions - manager, engineer, & intern
+// Team member questions - manager, engineer, intern, & add another employee
 // Manager questions
 const managerQuestions = [
   {
@@ -79,3 +79,50 @@ const internQuestions = [
     name: "internSchool",
   },
 ];
+
+// Add another employee question
+const anotherEmployeeQuestion = [
+  {
+    type: "list",
+    message: "Select another team member, or press 'None'",
+    choices: ["Engineer", "Intern", "None"],
+    name: "newEmployee",
+  },
+];
+
+// function to initialize application
+function init() {
+  // call manager function since each team requires a manager
+  promptManagerQ();
+}
+
+// ask manager questions
+function promptManagerQ() {
+  inquirer.prompt(managerQuestions).then((responses) => {
+    //call function to add employee
+    addAnotherEmployee();
+  });
+}
+
+// ask if they want to add an employee
+function addAnotherEmployee() {
+  inquirer.prompt(anotherEmployeeQuestion).then((responses) => {
+    //add switch statement based on user response
+  });
+}
+
+// ask engineer questions
+function promptEngineer() {
+  inquirer.prompt(engineerQuestions).then((responses) => {
+    //call function to add employee
+    addAnotherEmployee();
+  });
+}
+
+// ask intern questions
+function promptIntern() {
+  inquirer.prompt(internQuestions).then((responses) => {
+    //call function to add employee
+    addAnotherEmployee();
+  });
+}
