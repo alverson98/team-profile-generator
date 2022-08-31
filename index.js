@@ -90,6 +90,9 @@ const anotherEmployeeQuestion = [
   },
 ];
 
+//empty array to add team members
+const arrayTeamMembers = [];
+
 // function to initialize application
 function init() {
   // call manager function since each team requires a manager
@@ -99,6 +102,18 @@ function init() {
 // ask manager questions
 function promptManagerQ() {
   inquirer.prompt(managerQuestions).then((responses) => {
+    //declaring variables to pass as arguments
+    let name = responses.managerName;
+    let id = responses.managerID;
+    let email = responses.managerEmail;
+    let officeNumber = responses.managerOfficeNumber;
+
+    //new manager object
+    const manager = new Manager(name, id, email, officeNumber);
+
+    //adding manager to team member array
+    arrayTeamMembers.push(manager);
+
     //call function to add employee
     addAnotherEmployee();
   });
