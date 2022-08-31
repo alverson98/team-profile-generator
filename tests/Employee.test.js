@@ -1,11 +1,27 @@
+const Employee = require("../lib/Employee");
+
 describe("Employee class", () => {
-  it("", () => {});
+  it("creates an employee object that contains name, id, and email", () => {
+    const employee = new Employee("Hannah", 10, "hannah@example.com");
 
-  describe("getName", () => {});
+    expect(employee.name).toEqual("Hannah");
+    expect(employee.id).toEqual(10);
+    expect(employee.email).toEqual("hannah@example.com");
+  });
 
-  describe("getId", () => {});
+  describe("getName", () => {
+    it("gets employee's name", () => {});
+  });
 
-  describe("getEmail", () => {});
+  describe("getId", () => {
+    it("gets employee's id", () => {});
+  });
 
-  describe("getRole", () => {}); //Returns 'Employee'
+  describe("getEmail", () => {
+    it("gets employee's email", () => {});
+  });
+
+  describe("getRole", () => {
+    it("gets employee's role", () => {});
+  }); //Returns 'Employee'
 });
