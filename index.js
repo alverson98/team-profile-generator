@@ -129,6 +129,18 @@ function addAnotherEmployee() {
 // ask engineer questions
 function promptEngineer() {
   inquirer.prompt(engineerQuestions).then((responses) => {
+    //declaring variables to pass as arguments
+    let name = responses.engineerName;
+    let id = responses.engineerID;
+    let email = responses.engineerEmail;
+    let github = responses.engineerGithub;
+
+    //new engineer object
+    const engineer = new Engineer(name, id, email, github);
+
+    //adding engineer to team member array
+    arrayTeamMembers.push(engineer);
+
     //call function to add employee
     addAnotherEmployee();
   });
@@ -137,6 +149,18 @@ function promptEngineer() {
 // ask intern questions
 function promptIntern() {
   inquirer.prompt(internQuestions).then((responses) => {
+    //declaring variables to pass as arguments
+    let name = responses.internName;
+    let id = responses.internID;
+    let email = responses.internEmail;
+    let school = responses.internSchool;
+
+    //new intern object
+    const intern = new Intern(name, id, email, school);
+
+    //adding intern to team member array
+    arrayTeamMembers.push(manager);
+
     //call function to add employee
     addAnotherEmployee();
   });
