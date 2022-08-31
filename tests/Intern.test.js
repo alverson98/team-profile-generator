@@ -1,13 +1,30 @@
-describe("Employee class", () => {
-  it("", () => {});
+const Intern = require("../lib/Intern");
 
-  describe("getName", () => {});
+describe("Intern class", () => {
+  it("should create an intern object including name, id, email, and school", () => {
+    const intern = new Intern("Hannah", 10, "hannah@example.com", "DU");
+    expect(intern.name).toEqual("Hannah");
+    expect(intern.id).toEqual(10);
+    expect(intern.email).toEqual("hannah@example.com");
+    expect(intern.school).toEqual("DU");
+    expect(typeof intern).toEqual("object");
+  });
 
-  describe("getId", () => {});
+  describe("getSchool", () => {
+    it("should get intern's school from getSchool method", () => {
+      const school = "DU";
+      const intern = new Intern("Hannah", 10, "hannah@example.com", school);
 
-  describe("getEmail", () => {});
+      expect(intern.getSchool()).toEqual(school);
+    });
+  });
 
-  describe("getSchool", () => {});
+  // Overridden to return 'Intern'
+  describe("getRole", () => {
+    it("should return 'Intern' from getRole method", () => {
+      const intern = new Intern("Hannah", 10, "hannah@example.com", "DU");
 
-  describe("getRole", () => {}); // Overridden to return 'Intern'
+      expect(intern.getRole()).toEqual("Intern");
+    });
+  });
 });
