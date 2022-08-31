@@ -122,7 +122,17 @@ function promptManagerQ() {
 // ask if they want to add an employee
 function addAnotherEmployee() {
   inquirer.prompt(anotherEmployeeQuestion).then((responses) => {
-    //add switch statement based on user response
+    //switch statement - calling functions based on user choice
+    switch(responses.newEmployee) {
+        case "Engineer":
+            promptEngineer();
+            return;
+        case "Intern":
+            promptIntern();
+            return;
+        case "Done":
+            createTeam();
+    }
   });
 }
 
@@ -164,4 +174,8 @@ function promptIntern() {
     //call function to add employee
     addAnotherEmployee();
   });
+}
+
+//creating file to display team
+function createTeam() {
 }
