@@ -5,21 +5,23 @@ var teamCardArray = [];
 const createPageHTML = function (arrayTeamMembers) {
   // Looping through each item in the arrayTeamMembers
   for (let i = 0; i < arrayTeamMembers.length; i++) {
+    var teamMember = arrayTeamMembers[i];
+    console.log(teamMember.getRole());
     // Manager
-    if (arrayTeamMembers.manager.role === "Manager") {
-      const managerCard = generateManagerCard(arrayTeamMembers);
+    if (teamMember.getRole() === "Manager") {
+      const managerCard = generateManagerCard(teamMember);
       teamCardArray.push(managerCard);
     }
 
     //Engineer
-    if (arrayTeamMembers.engineer.role === "Engineer") {
-      const engineerCard = generateEngineerCard(arrayTeamMembers);
+    if (teamMember.getRole() === "Engineer") {
+      const engineerCard = generateEngineerCard(teamMember);
       teamCardArray.push(engineerCard);
     }
 
     //Intern
-    if (arrayTeamMembers.intern.role === "Intern") {
-      const internCard = generateInternCard(arrayTeamMembers);
+    if (teamMember.getRole() === "Intern") {
+      const internCard = generateInternCard(teamMember);
       teamCardArray.push(internCard);
     }
   }
@@ -33,51 +35,51 @@ const createPageHTML = function (arrayTeamMembers) {
 };
 
 // Manager Card
-function generateManagerCard(arrayTeamMembers) {
+function generateManagerCard(manager) {
   return `<div class="card">
             <div class="card-body">
                 <div class="card-heading">
-                    <h5 class="card-title">${arrayTeamMembers.manager.name}</h5>
+                    <h5 class="card-title">${manager.getName()}</h5>
                     <h6 class="card-subtitle mb-2">Manager</h6>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="id list-group-item">ID: ${arrayTeamMembers.manager.id}</li>
-                    <li class="email list-group-item">Email: <a href="mailto:${arrayTeamMembers.manager.email}">${arrayTeamMembers.manager.email}</a></li>
-                     <li class="office-number list-group-item">Office Number: ${arrayTeamMembers.manager.officeNumber}</li>
+                    <li class="id list-group-item">ID: ${manager.getId()}</li>
+                    <li class="email list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
+                     <li class="office-number list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
                  </ul>
             </div>
         </div>`;
 }
 
 // Engineer Card
-function generateEngineerCard(arrayTeamMembers) {
+function generateEngineerCard(engineer) {
   return `<div class="card">
               <div class="card-body">
                   <div class="card-heading">
-                      <h5 class="card-title">${arrayTeamMembers.engineer.name}</h5>
+                      <h5 class="card-title">${engineer.getName()}</h5>
                       <h6 class="card-subtitle mb-2">Engineer</h6>
                   </div>
                   <ul class="list-group list-group-flush">
-                      <li class="id list-group-item">ID: ${arrayTeamMembers.engineer.id}</li>
-                      <li class="email list-group-item">Email: <a href="mailto:${arrayTeamMembers.engineer.email}">${arrayTeamMembers.engineer.email}</a></li>
-                       <li class="github list-group-item">GitHub Username: ${arrayTeamMembers.engineer.github}</li>
+                      <li class="id list-group-item">ID: ${engineer.getId()}</li>
+                      <li class="email list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+                       <li class="github list-group-item">GitHub Username: ${engineer.getGithub()}</li>
                    </ul>
               </div>
           </div>`;
 }
 
 // Intern Card
-function generateInternCard(arrayTeamMembers) {
+function generateInternCard(intern) {
   return `<div class="card">
               <div class="card-body">
                   <div class="card-heading">
-                      <h5 class="card-title">${arrayTeamMembers.intern.name}</h5>
+                      <h5 class="card-title">${intern.getName()}</h5>
                       <h6 class="card-subtitle mb-2">Intern</h6>
                   </div>
                   <ul class="list-group list-group-flush">
-                      <li class="id list-group-item">ID: ${arrayTeamMembers.intern.id}</li>
-                      <li class="email list-group-item">Email: <a href="mailto:${arrayTeamMembers.intern.email}">${arrayTeamMembers.intern.email}</a></li>
-                       <li class="school list-group-item">School: ${arrayTeamMembers.intern.school}</li>
+                      <li class="id list-group-item">ID: ${intern.getId()}</li>
+                      <li class="email list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+                       <li class="school list-group-item">School: ${intern.getSchool()}</li>
                    </ul>
               </div>
           </div>`;
