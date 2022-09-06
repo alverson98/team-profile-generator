@@ -67,7 +67,7 @@ const internQuestions = [
   {
     type: "input",
     message: "What is the intern's ID?",
-    name: "internID",
+    name: "internId",
   },
   {
     type: "input",
@@ -99,7 +99,7 @@ function promptManagerQ() {
   inquirer.prompt(managerQuestions).then((responses) => {
     //declaring variables to pass as arguments
     let name = responses.managerName;
-    let id = responses.managerID;
+    let id = responses.managerId;
     let email = responses.managerEmail;
     let officeNumber = responses.managerOfficeNumber;
 
@@ -138,7 +138,7 @@ function promptEngineer() {
   inquirer.prompt(engineerQuestions).then((responses) => {
     //declaring variables to pass as arguments
     let name = responses.engineerName;
-    let id = responses.engineerID;
+    let id = responses.engineerId;
     let email = responses.engineerEmail;
     let github = responses.engineerGithub;
 
@@ -160,10 +160,9 @@ function promptIntern() {
   inquirer.prompt(internQuestions).then((responses) => {
     //declaring variables to pass as arguments
     let name = responses.internName;
-    let id = responses.internID;
+    let id = responses.internId;
     let email = responses.internEmail;
     let school = responses.internSchool;
-    
 
     //new intern object
     const intern = new Intern(name, id, email, school);
