@@ -94,10 +94,6 @@ const anotherEmployeeQuestion = [
 //empty array to add team members
 const arrayTeamMembers = [];
 
-
-  // call manager function since each team requires a manager
-  promptManagerQ();
-
 // ask manager questions
 function promptManagerQ() {
   inquirer.prompt(managerQuestions).then((responses) => {
@@ -106,15 +102,18 @@ function promptManagerQ() {
     let id = responses.managerID;
     let email = responses.managerEmail;
     let officeNumber = responses.managerOfficeNumber;
+    let role = "Manager";
 
     //new manager object
-    const manager = new Manager(name, id, email, officeNumber);
+    const manager = new Manager(name, id, email, officeNumber, role);
 
     //adding manager to team member array
     arrayTeamMembers.push(manager);
 
     //call function to add employee
     addAnotherEmployee();
+
+    return arrayTeamMembers;
   });
 }
 
@@ -130,7 +129,7 @@ function addAnotherEmployee() {
         promptIntern();
         return;
       case "Done":
-        createTeam();
+        createTeam(arrayTeamMembers);
     }
   });
 }
@@ -143,15 +142,18 @@ function promptEngineer() {
     let id = responses.engineerID;
     let email = responses.engineerEmail;
     let github = responses.engineerGithub;
+    let role = "Engineer";
 
     //new engineer object
-    const engineer = new Engineer(name, id, email, github);
+    const engineer = new Engineer(name, id, email, github, role);
 
     //adding engineer to team member array
     arrayTeamMembers.push(engineer);
 
     //call function to add employee
     addAnotherEmployee();
+
+    return arrayTeamMembers;
   });
 }
 
@@ -163,20 +165,23 @@ function promptIntern() {
     let id = responses.internID;
     let email = responses.internEmail;
     let school = responses.internSchool;
+    let role = "Intern";
 
     //new intern object
-    const intern = new Intern(name, id, email, school);
+    const intern = new Intern(name, id, email, school, role);
 
     //adding intern to team member array
     arrayTeamMembers.push(intern);
 
     //call function to add employee
     addAnotherEmployee();
+
+    return arrayTeamMembers;
   });
 }
 
 //generating HTML file to be displayed
-function createTeam() {
+function createTeam(arrayTeamMembers) {
   var fileContent = generateHTML(arrayTeamMembers);
 
   //calling function to make HTML file
@@ -194,4 +199,5 @@ function writeToFile(fileContent) {
   });
 }
 
-
+// call manager function since each team requires a manager
+promptManagerQ();
