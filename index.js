@@ -3,6 +3,7 @@ const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const generateHTML = require("./src/generateHTML");
 
 const inquirer = require("inquirer");
 const fs = require("fs");
@@ -93,11 +94,9 @@ const anotherEmployeeQuestion = [
 //empty array to add team members
 const arrayTeamMembers = [];
 
-// function to initialize application
-function init() {
+
   // call manager function since each team requires a manager
   promptManagerQ();
-}
 
 // ask manager questions
 function promptManagerQ() {
@@ -123,15 +122,15 @@ function promptManagerQ() {
 function addAnotherEmployee() {
   inquirer.prompt(anotherEmployeeQuestion).then((responses) => {
     //switch statement - calling functions based on user choice
-    switch(responses.newEmployee) {
-        case "Engineer":
-            promptEngineer();
-            return;
-        case "Intern":
-            promptIntern();
-            return;
-        case "Done":
-            createTeam();
+    switch (responses.newEmployee) {
+      case "Engineer":
+        promptEngineer();
+        return;
+      case "Intern":
+        promptIntern();
+        return;
+      case "Done":
+        createTeam();
     }
   });
 }
@@ -169,13 +168,30 @@ function promptIntern() {
     const intern = new Intern(name, id, email, school);
 
     //adding intern to team member array
-    arrayTeamMembers.push(manager);
+    arrayTeamMembers.push(intern);
 
     //call function to add employee
     addAnotherEmployee();
   });
 }
 
-//creating file to display team
+//generating HTML file to be displayed
 function createTeam() {
+  var fileContent = generateHTML(arrayTeamMembers);
+
+  //calling function to make HTML file
+  writeToFile(fileContent);
 }
+
+//creating file to display team
+function writeToFile(fileContent) {
+  fs.writeFile("./dist/index.html", fileContent, (err) => {
+    err
+      ? console.error(err)
+      : console.log(
+          "Your team has been created. Open index.html in your browser to view your team."
+        );
+  });
+}
+
+
