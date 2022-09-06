@@ -1,5 +1,39 @@
+// Array to store all of the created cards
+var teamCardArray = [];
+
+// Calling card functions when needed
+const createPageHTML = function (arrayTeamMembers) {
+  // Looping through each item in the arrayTeamMembers
+  for (let i = 0; i < arrayTeamMembers.length; i++) {
+    // Manager
+    if (role === "Manager") {
+      const managerCard = generateManagerCard(arrayTeamMembers);
+      teamCardArray.push(managerCard);
+    }
+
+    //Engineer
+    if (role === "Engineer") {
+      const engineerCard = generateEngineerCard(arrayTeamMembers);
+      teamCardArray.push(engineerCard);
+    }
+
+    //Intern
+    if (role === "Intern") {
+      const internCard = generateInternCard(arrayTeamMembers);
+      teamCardArray.push(internCard);
+    }
+  }
+
+  // Combining the strings in the array to use in generatePage()
+  const teamCards = teamCardArray.join(" ");
+
+  // Returning teamCards and passing to create the full HTML page
+  const completedPage = generatePage(teamCards);
+  return completedPage;
+};
+
 // Manager Card
-const managerCard = function generateManagerCard(arrayTeamMembers) {
+function generateManagerCard(arrayTeamMembers) {
   return `<div class="card">
             <div class="card-body">
                 <div class="card-heading">
@@ -13,10 +47,10 @@ const managerCard = function generateManagerCard(arrayTeamMembers) {
                  </ul>
             </div>
         </div>`;
-};
+}
 
 // Engineer Card
-const engineerCard = function generateEngineerCard(arrayTeamMembers) {
+function generateEngineerCard(arrayTeamMembers) {
   return `<div class="card">
               <div class="card-body">
                   <div class="card-heading">
@@ -30,10 +64,10 @@ const engineerCard = function generateEngineerCard(arrayTeamMembers) {
                    </ul>
               </div>
           </div>`;
-};
+}
 
 // Intern Card
-const internCard = function generateInternCard(arrayTeamMembers) {
+function generateInternCard(arrayTeamMembers) {
   return `<div class="card">
               <div class="card-body">
                   <div class="card-heading">
@@ -47,10 +81,10 @@ const internCard = function generateInternCard(arrayTeamMembers) {
                    </ul>
               </div>
           </div>`;
-};
+}
 
 // Creating the rest of the HTML to combine with the employee cards
-const createPage = function generatePage(teamCards) {
+function generatePage(teamCards) {
   return `<!DOCTYPE html>
         <html lang="en">
             <head>
@@ -58,6 +92,7 @@ const createPage = function generatePage(teamCards) {
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+                <link rel="stylesheet" href="style.css">
                 <title>Team Profile</title>
             </head>
             <body>
@@ -75,10 +110,7 @@ const createPage = function generatePage(teamCards) {
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
             </body>
         </html>`;
-};
+}
 
-// ##PSEUDO CODING
-// Create cards based on employee type
-//create array to push each card in
-//function to make the overall HTML page (pass the array of cards)
-//export the html page
+// Exporting
+module.exports = createPageHTML;
