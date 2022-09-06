@@ -1,5 +1,5 @@
 // Manager Card
-function generateManagerCard(arrayTeamMembers) {
+const managerCard = function generateManagerCard(arrayTeamMembers) {
   return `<div class="card">
             <div class="card-body">
                 <div class="card-heading">
@@ -13,10 +13,10 @@ function generateManagerCard(arrayTeamMembers) {
                  </ul>
             </div>
         </div>`;
-}
+};
 
 // Engineer Card
-function generateEngineerCard(arrayTeamMembers) {
+const engineerCard = function generateEngineerCard(arrayTeamMembers) {
   return `<div class="card">
               <div class="card-body">
                   <div class="card-heading">
@@ -30,10 +30,10 @@ function generateEngineerCard(arrayTeamMembers) {
                    </ul>
               </div>
           </div>`;
-}
+};
 
 // Intern Card
-function generateManagerCard(arrayTeamMembers) {
+const internCard = function generateInternCard(arrayTeamMembers) {
   return `<div class="card">
               <div class="card-body">
                   <div class="card-heading">
@@ -47,7 +47,35 @@ function generateManagerCard(arrayTeamMembers) {
                    </ul>
               </div>
           </div>`;
-}
+};
+
+// Creating the rest of the HTML to combine with the employee cards
+const createPage = function generatePage(teamCards) {
+  return `<!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+                <title>Team Profile</title>
+            </head>
+            <body>
+                <!-- Heading -->
+                <header class="bg-primary bg-gradient text-white text-center">
+                    <h1>My Team</h1>
+                </header>
+  
+                <!-- Team Member cards -->
+                <main class="main-content">
+                    ${teamCards}
+                </main>
+  
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+            </body>
+        </html>`;
+};
 
 // ##PSEUDO CODING
 // Create cards based on employee type
