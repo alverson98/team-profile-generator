@@ -102,10 +102,9 @@ function promptManagerQ() {
     let id = responses.managerID;
     let email = responses.managerEmail;
     let officeNumber = responses.managerOfficeNumber;
-    let role = "Manager";
 
     //new manager object
-    const manager = new Manager(name, id, email, officeNumber, role);
+    const manager = new Manager(name, id, email, officeNumber);
 
     //adding manager to team member array
     arrayTeamMembers.push(manager);
@@ -128,7 +127,7 @@ function addAnotherEmployee() {
       case "Intern":
         promptIntern();
         return;
-      case "Done":
+      case "None":
         createTeam(arrayTeamMembers);
     }
   });
@@ -142,10 +141,9 @@ function promptEngineer() {
     let id = responses.engineerID;
     let email = responses.engineerEmail;
     let github = responses.engineerGithub;
-    let role = "Engineer";
 
     //new engineer object
-    const engineer = new Engineer(name, id, email, github, role);
+    const engineer = new Engineer(name, id, email, github);
 
     //adding engineer to team member array
     arrayTeamMembers.push(engineer);
@@ -165,10 +163,10 @@ function promptIntern() {
     let id = responses.internID;
     let email = responses.internEmail;
     let school = responses.internSchool;
-    let role = "Intern";
+    
 
     //new intern object
-    const intern = new Intern(name, id, email, school, role);
+    const intern = new Intern(name, id, email, school);
 
     //adding intern to team member array
     arrayTeamMembers.push(intern);
