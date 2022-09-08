@@ -35,3 +35,15 @@ header h1 {
 .card-subtitle {
   font-size: 18px;
 }
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 48%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .card {
+    width: 100%;
+  }
+}
