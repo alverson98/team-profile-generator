@@ -1,0 +1,37 @@
+header {
+  padding: 20px 0 20px 0;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 45px;
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  width: 30%;
+  border: 2px solid grey;
+  border-radius: 15px;
+}
+
+.card-heading {
+  background-color: #c60267;
+  color: white;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 28px;
+}
+
+.card-subtitle {
+  font-size: 18px;
+}
